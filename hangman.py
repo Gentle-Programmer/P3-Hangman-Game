@@ -1,3 +1,5 @@
+import random
+
 def dispaly_welcome():
     logo = r"""
   +---+
@@ -12,4 +14,14 @@ def dispaly_welcome():
     start_game = input("Do you want to start the game? (y/n): ").lower()
     return start_game == "y"
 
-dispaly_welcome()
+if dispaly_welcome():
+    print("Let's get started")
+else:
+    print("Goodbye!")
+
+def get_name():
+    pass
+
+def select_random_word():
+    pass
+
