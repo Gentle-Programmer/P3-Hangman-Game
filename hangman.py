@@ -20,12 +20,13 @@ else:
     print("Goodbye!")
 
 def get_name():
-    pass
+    return input("Enter your name: ")
 
 def select_random_word():
-    pass
+    words = ['apple', 'banana', 'orange', 'grape', 'kiwi']
+    return random.choice(words)
 
-def get_use_guess():
+def get_user_guess():
     return input("Enter a letter: ").lower()
 
 
