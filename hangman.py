@@ -21,7 +21,9 @@ def mask_word(word):
 
 def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(HANGMAN_STAGES[6 - attemps_remaining])
-
+    print(f"Word: {masked_word}")
+    print(f"Attemps remaining: {attemps_remaining}")
+    print(f"Wrong guesses: {', '.join(wrong_guesses) }")
 
 def get_user_guess():
     return input("Enter a letter: ").lower()
