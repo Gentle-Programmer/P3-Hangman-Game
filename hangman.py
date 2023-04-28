@@ -38,4 +38,11 @@ def main_game_loop():
 
     while attemps_remaining > 0 and masked_word != word:
         display_game_status(masked_word, attemps_remaining, wrong_guesses)
+        user_guess = get_user_guess()
+        if len(user_guess) != 1 or not user_guess.isalpha():
+            print("Invalid input. Please enter a single letter.")
+        elif user_guess in wrong_guesses or user_guess in masked_word:
+            print("You-ve already guessed that letter.")
+        else:
+            pass
   
