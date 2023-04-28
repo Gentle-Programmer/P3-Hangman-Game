@@ -26,7 +26,7 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(f"Wrong guesses: {', '.join(wrong_guesses) }")
 
 def get_user_guess():
-    return input("Enter a letter: ").lower()
+    return input("Enter a letter (a single letter): ").lower()
 
 
     
@@ -35,4 +35,7 @@ def main_game_loop():
     masked_word = mask_word()
     attemps_remaining = 6
     wrong_guesses = []
+
+    while attemps_remaining > 0 and masked_word != word:
+        display_game_status(masked_word, attemps_remaining, wrong_guesses)
   
