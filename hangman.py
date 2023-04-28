@@ -80,7 +80,11 @@ def display_game_status():
  /|\  |
  / \  |
       |
-========='''] 
+=========''']
+
     
 def main_game_loop():
-    pass
+    name = get_player_name()
+    word = select_random_word()
+
+main_game_loop()
