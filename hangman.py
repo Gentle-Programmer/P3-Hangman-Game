@@ -25,3 +25,7 @@ def get_name():
 def select_random_word():
     pass
 
+def get_use_guess():
+    return input("Enter a letter: ").lower()
+
+
