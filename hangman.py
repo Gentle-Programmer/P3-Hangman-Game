@@ -28,6 +28,9 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
 def get_user_guess():
     return input("Enter a letter (a single letter): ").lower()
 
+def update_game_status():
+    pass
+
 
     
 def main_game_loop():
