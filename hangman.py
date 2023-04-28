@@ -1,4 +1,5 @@
 import random
+form hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
 
 def dispaly_welcome():
     logo = r"""
