@@ -19,7 +19,7 @@ def select_random_word():
 def mask_word(word):
     return "_" * len(word)
 
-def display_game_status(masked_word):
+def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(HANGMAN_STAGES[6 - attemps_remaining])
 
 
@@ -32,5 +32,5 @@ def main_game_loop():
     word = select_random_word()
     masked_word = mask_word()
     attemps_remaining = 6
-    wrong_guesses
+    wrong_guesses = []
   
