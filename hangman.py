@@ -41,7 +41,14 @@ def update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_g
         attemps_remaining -= 1
         wrong_guesses.append(user_guess)
         return masked_word, attemps_remaining, wrong_guesses
-    
+
+
+def display_game_result(result):
+    if result:
+        print("Congratulations! You won!")
+    else:
+        print("Sorry, you lost.") 
+
 
 def main_game_loop():
     word = select_random_word()
@@ -58,6 +65,8 @@ def main_game_loop():
             print("You-ve already guessed that letter.")
         else:
             masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
-    return masked_letter == word
+
+    result = masked_word == word
+    display_game_result(result)
   
 main_game_loop()
