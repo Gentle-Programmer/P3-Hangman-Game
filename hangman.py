@@ -28,11 +28,17 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
 def get_user_guess():
     return input("Enter a letter (a single letter): ").lower()
 
-def update_game_status():
-    pass
-
-
+def update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses):
+    if user_guess in word:
+        new_masked_word = ""
+        for letter, masked_letter in zip(word, masked_word):
+            if letter == user_guess:
+                new_masked_word += letter
+            else:
+                new_masked_word += masked_letter
+        return new_masked_word, attemps_remaining, wrong_guesses
     
+
 def main_game_loop():
     word = select_random_word()
     masked_word = mask_word()
