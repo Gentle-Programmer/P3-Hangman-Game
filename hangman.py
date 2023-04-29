@@ -4,6 +4,7 @@ from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
 def dispaly_welcome():
     print(HANGMAN_LOGO)
     print("Welcome to Hangman!")
+    print("In this game, you have to guess the word by syggesting individual letters. You have 6 attemps to guess the word. Good luck!")
 
 def start_game():
     user_input = input("Do you want to start the game? (yes/no): ").lower()
@@ -51,6 +52,7 @@ def display_game_result(result):
 
 
 def main_game_loop():
+    dispaly_welcome()
     word = select_random_word()
     masked_word = mask_word(word)
     attemps_remaining = 6
