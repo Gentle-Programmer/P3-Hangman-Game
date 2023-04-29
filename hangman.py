@@ -2,24 +2,32 @@ import random
 import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
 
+
 def dispaly_welcome():
     print(HANGMAN_LOGO)
     print("Welcome to Hangman!")
-    print("In this game, you have to guess the word by syggesting individual letters. You have 6 attemps to guess the word. Good luck!")
+    print("In this game, you have to guess the word by syggesting "
+        "individual letters. You have 6 attemps to guess the word. Good luck!")
+
 
 def start_game():
-    user_input = pypi.inputYesNo("Do you want to start the game? (yes/no): ").lower()
+    user_input = pypi.inputYesNo("Do you want to start the game?"
+    "(yes/no): ").lower()
     return user_input == 'yes'
+
 
 def get_name():
     return input("Please enter your name: ")
+
 
 def select_random_word():
     words = ['apple', 'banana', 'orange', 'grape', 'kiwi', 'strawberry', 'melon', 'pineapple', 'mango', 'papaya', 'peach', 'apricot', 'coconut']
     return random.choice(words)
 
+
 def mask_word(word):
     return "_" * len(word)
+
 
 def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(HANGMAN_STAGES[6 - attemps_remaining])
@@ -27,8 +35,10 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(f"Attemps remaining: {attemps_remaining}")
     print(f"Wrong guesses: {', '.join(wrong_guesses) }")
 
+
 def get_user_guess():
     return input("Enter a letter (a single letter): ").lower()
+
 
 def update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses):
     if user_guess in word:
@@ -49,7 +59,7 @@ def display_game_result(result):
     if result:
         print("Congratulations! You won!")
     else:
-        print("Sorry, you lost.") 
+        print("Sorry, you lost.")
 
 
 def main_game_loop():
@@ -70,8 +80,11 @@ def main_game_loop():
             else:
                masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
 
+
         result = masked_word == word
         display_game_result(result)
     else:
         print("Goodbye")
+
+
 main_game_loop()
