@@ -1,4 +1,5 @@
 import random
+import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
 
 def dispaly_welcome():
@@ -7,7 +8,7 @@ def dispaly_welcome():
     print("In this game, you have to guess the word by syggesting individual letters. You have 6 attemps to guess the word. Good luck!")
 
 def start_game():
-    user_input = input("Do you want to start the game? (yes/no): ").lower()
+    user_input = pypi.inputYesNo("Do you want to start the game? (yes/no): ").lower()
     return user_input == 'yes'
 
 def get_name():
@@ -53,22 +54,24 @@ def display_game_result(result):
 
 def main_game_loop():
     dispaly_welcome()
-    word = select_random_word()
-    masked_word = mask_word(word)
-    attemps_remaining = 6
-    wrong_guesses = []
+    if start_game():
+        word = select_random_word()
+        masked_word = mask_word(word)
+        attemps_remaining = 6
+        wrong_guesses = []
 
-    while attemps_remaining > 0 and masked_word != word:
-        display_game_status(masked_word, attemps_remaining, wrong_guesses)
-        user_guess = get_user_guess()
-        if len(user_guess) != 1 or not user_guess.isalpha():
-            print("Invalid input. Please enter a single letter.")
-        elif user_guess in wrong_guesses or user_guess in masked_word:
-            print("You-ve already guessed that letter.")
-        else:
-            masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
+        while attemps_remaining > 0 and masked_word != word:
+            display_game_status(masked_word, attemps_remaining, wrong_guesses)
+            user_guess = get_user_guess()
+            if len(user_guess) != 1 or not user_guess.isalpha():
+               print("Invalid input. Please enter a single letter.")
+            elif user_guess in wrong_guesses or user_guess in masked_word:
+              print("You-ve already guessed that letter.")
+            else:
+               masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
 
-    result = masked_word == word
-    display_game_result(result)
-  
+        result = masked_word == word
+        display_game_result(result)
+    else:
+        print("Goodbye")
 main_game_loop()
