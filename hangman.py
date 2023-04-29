@@ -6,13 +6,13 @@ from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
 def dispaly_welcome():
     print(HANGMAN_LOGO)
     print("Welcome to Hangman!")
-    print("In this game, you have to guess the word by syggesting "
-        "individual letters. You have 6 attemps to guess the word. Good luck!")
+    print("In this game, you have to guess the word by syggesting individual "
+          "letters. You have 6 attemps to guess the word. Good luck!")
 
 
 def start_game():
     user_input = pypi.inputYesNo("Do you want to start the game?"
-    "(yes/no): ").lower()
+                                 "(yes/no): ").lower()
     return user_input == 'yes'
 
 
@@ -21,7 +21,9 @@ def get_name():
 
 
 def select_random_word():
-    words = ['apple', 'banana', 'orange', 'grape', 'kiwi', 'strawberry', 'melon', 'pineapple', 'mango', 'papaya', 'peach', 'apricot', 'coconut']
+    words = ['apple', 'banana', 'orange', 'grape', 'kiwi',
+             'strawberry', 'melon', 'pineapple', 'mango',
+             'papaya', 'peach', 'apricot', 'coconut']
     return random.choice(words)
 
 
@@ -40,7 +42,8 @@ def get_user_guess():
     return input("Enter a letter (a single letter): ").lower()
 
 
-def update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses):
+def update_game_status(user_guess, word, masked_word,
+                       attemps_remaining, wrong_guesses):
     if user_guess in word:
         new_masked_word = ""
         for letter, masked_letter in zip(word, masked_word):
@@ -74,12 +77,16 @@ def main_game_loop():
             display_game_status(masked_word, attemps_remaining, wrong_guesses)
             user_guess = get_user_guess()
             if len(user_guess) != 1 or not user_guess.isalpha():
-               print("Invalid input. Please enter a single letter.")
+                print("Invalid input. Please enter a single letter.")
             elif user_guess in wrong_guesses or user_guess in masked_word:
-              print("You-ve already guessed that letter.")
+                print("You-ve already guessed that letter.")
             else:
-               masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
-
+                masked_word,
+                attemps_remaining,
+                wrong_guesses = update_game_status(user_guess, word,
+                                                   masked_word,
+                                                   attemps_remaining,
+                                                   wrong_guesses)
 
         result = masked_word == word
         display_game_result(result)
