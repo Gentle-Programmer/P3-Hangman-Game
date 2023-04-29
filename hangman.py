@@ -13,7 +13,7 @@ def get_name():
     return input("Please enter your name: ")
 
 def select_random_word():
-    words = ['apple', 'banana', 'orange', 'grape', 'kiwi']
+    words = ['apple', 'banana', 'orange', 'grape', 'kiwi', 'strawberry', 'melon', 'pineapple', 'mango', 'papaya', 'peach', 'apricot', 'coconut']
     return random.choice(words)
 
 def mask_word(word):
