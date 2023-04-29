@@ -37,11 +37,15 @@ def update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_g
             else:
                 new_masked_word += masked_letter
         return new_masked_word, attemps_remaining, wrong_guesses
+    else:
+        attemps_remaining -= 1
+        wrong_guesses.append(user_guess)
+        return masked_word, attemps_remaining, wrong_guesses
     
 
 def main_game_loop():
     word = select_random_word()
-    masked_word = mask_word()
+    masked_word = mask_word(word)
     attemps_remaining = 6
     wrong_guesses = []
 
@@ -53,5 +57,7 @@ def main_game_loop():
         elif user_guess in wrong_guesses or user_guess in masked_word:
             print("You-ve already guessed that letter.")
         else:
-            pass
+            masked_word, attemps_remaining, wrong_guesses = update_game_status(user_guess, word, masked_word, attemps_remaining, wrong_guesses)
+    return masked_letter == word
   
+main_game_loop()
