@@ -1,6 +1,7 @@
 import random
 import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
+from hangman_google import send_data
 
 
 def dispaly_welcome():
@@ -35,7 +36,7 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
     print(HANGMAN_STAGES[6 - attemps_remaining])
     print(f"Word: {masked_word}")
     print(f"Attemps remaining: {attemps_remaining}")
-    print(f"Wrong guesses: {', '.join(wrong_guesses) }")
+    print(f"Wrong guesses: {', '.join(map(str, wrong_guesses)) }")
 
 
 def get_user_guess():
