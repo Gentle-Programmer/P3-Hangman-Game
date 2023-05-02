@@ -14,11 +14,11 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_score')
 
 def send_data(name, score, timestamp):
-    values = [now, name, score]
+    values = [timestamp, name, score]
 
 def append_data_to_sheet(values):
     worksheet = SHEET.get_worksheet(0)
-    worksheet.append_wor(values)
+    worksheet.append_row(values)
 
 def get_all_data():
     worksheet = SHEET.get_worksheet(0)

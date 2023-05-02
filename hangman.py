@@ -1,7 +1,7 @@
 import random
 import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
-from hangman_google import send_data, append_data_to_sheet, get_all_data
+from hangman_google import send_data, append_data_to_sheet, get_all_data, SHEET
 from datetime import datetime
 
 
@@ -67,34 +67,52 @@ def display_game_result(result):
         print("Sorry, you lost.")
 
 
+def display_previous_scores():
+    print("\nPrevious users scores: ")
+    worksheet = SHEET.worksheet("Scores")
+    data = worksheet.get_all_data()
+    for record in data:
+        print(f"{record['timestamp']} - {record['name']} - {record['score']}")
+
+
+def play_again():
+    return pypi.inputYesNo("\nDo you want to play again? (yes/no)").lower() == 'yes'
+
+
 def main_game_loop():
     dispaly_welcome()
-    name = get_name()
     if start_game():
-        word = select_random_word()
-        masked_word = mask_word(word)
-        attemps_remaining = 6
-        wrong_guesses = []
+        name = get_name()
+        
+        while True: 
+            word = select_random_word()
+            masked_word = mask_word(word)
+            attemps_remaining = 6
+            wrong_guesses = []
 
-        while attemps_remaining > 0 and masked_word != word:
-            display_game_status(masked_word, attemps_remaining, wrong_guesses)
-            user_guess = get_user_guess()
-            if len(user_guess) != 1 or not user_guess.isalpha():
-                print("Invalid input. Please enter a single letter.")
-            elif user_guess in wrong_guesses or user_guess in masked_word:
-                print("You-ve already guessed that letter.")
-            else:
-                masked_word, attemps_remaining, wrong_guesses = (
-    update_game_status(
-        user_guess, word, masked_word, attemps_remaining, wrong_guesses
-    )
+            while attemps_remaining > 0 and masked_word != word:
+                display_game_status(masked_word, attemps_remaining, wrong_guesses)
+                user_guess = get_user_guess()
+                if len(user_guess) != 1 or not user_guess.isalpha():
+                    print("Invalid input. Please enter a single letter.")
+                elif user_guess in wrong_guesses or user_guess in masked_word:
+                    print("You-ve already guessed that letter.")
+                else:
+                    masked_word, attemps_remaining, wrong_guesses = (
+        update_game_status(
+            user_guess, word, masked_word, attemps_remaining, wrong_guesses
+        )
 )
-        result = masked_word == word
-        display_game_result(result)
-        score = 6 - attemps_remaining
-        current_time = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-        send_data(name, score, current_time)
-        append_data_to_sheet([current_time,name, score])
+            result = masked_word == word
+            display_game_result(result)
+            score = 6 - attemps_remaining
+            current_time = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+            send_data(name, score, current_time)
+            append_data_to_sheet([current_time,name, score])
+            display_previous_scores()
+
+            if not play_again():
+                break
     else:
         print("Goodbye")
 
