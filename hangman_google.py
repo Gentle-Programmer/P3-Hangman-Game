@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from datetime import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,6 +16,7 @@ SHEET = GSPREAD_CLIENT.open('hangman_score')
 def append_data_to_sheet(values):
     worksheet = SHEET.get_worksheet(0)
     worksheet.append_row(values)
+
 
 def get_all_data():
     worksheet = SHEET.get_worksheet(0)
