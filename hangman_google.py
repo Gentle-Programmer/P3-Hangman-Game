@@ -13,8 +13,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_score')
 
-def send_data(name, score, timestamp):
-    values = [timestamp, name, score]
 
 def append_data_to_sheet(values):
     worksheet = SHEET.get_worksheet(0)
