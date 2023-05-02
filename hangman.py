@@ -14,12 +14,12 @@ def dispaly_welcome():
 
 def start_game():
     user_input = pypi.inputYesNo("Do you want to start the game?"
-                                 "(yes/no): ").lower()
+                                 "(yes/no):\n ").lower()
     return user_input == 'yes'
 
 
 def get_name():
-    return input("Please enter your name: ")
+    return input("Please enter your name:\n ")
 
 
 def select_random_word():
@@ -41,7 +41,7 @@ def display_game_status(masked_word, attemps_remaining, wrong_guesses):
 
 
 def get_user_guess():
-    return input("Enter a letter (a single letter): ").lower()
+    return input("Enter a letter (a single letter):\n ").lower()
 
 
 def update_game_status(user_guess, word, masked_word,
@@ -76,7 +76,7 @@ def display_previous_scores():
 
 
 def play_again():
-    return pypi.inputYesNo("\nDo you want to play again? "
+    return pypi.inputYesNo("\nDo you want to play again?\n "
                            "(yes/no)").lower() == 'yes'
 
 
