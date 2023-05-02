@@ -69,8 +69,8 @@ def display_game_result(result):
 
 def display_previous_scores():
     print("\nPrevious users scores: ")
-    worksheet = SHEET.worksheet("Scores")
-    data = worksheet.get_all_data()
+    worksheet = SHEET.worksheet("scores")
+    data = worksheet.get_all_records()
     for record in data:
         print(f"{record['timestamp']} - {record['name']} - {record['score']}")
 
