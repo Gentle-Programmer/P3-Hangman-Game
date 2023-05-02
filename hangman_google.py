@@ -13,10 +13,13 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_score')
 
-def send_data(name, score):
-    now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+def send_data(name, score, timestamp):
     values = [now, name, score]
 
 def append_data_to_sheet(values):
     worksheet = SHEET.get_worksheet(0)
     worksheet.append_wor(values)
+
+def get_all_data():
+    worksheet = SHEET.get_worksheet(0)
+    return worksheet.get_all_records()

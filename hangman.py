@@ -1,7 +1,8 @@
 import random
 import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
-from hangman_google import send_data, append_data_to_sheet
+from hangman_google import send_data, append_data_to_sheet, get_all_data
+from datetime import datetime
 
 
 def dispaly_welcome():
@@ -91,8 +92,9 @@ def main_game_loop():
         result = masked_word == word
         display_game_result(result)
         score = 6 - attemps_remaining
-        send_data(name, score)
-        append_data_to_sheet([name, score])
+        current_time = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        send_data(name, score, current_time)
+        append_data_to_sheet([current_time,name, score])
     else:
         print("Goodbye")
 
