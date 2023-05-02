@@ -16,3 +16,5 @@ SHEET = GSPREAD_CLIENT.open('hangman_score')
 def send_data(name, score):
     now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     values = [now, name, score]
+
+def append

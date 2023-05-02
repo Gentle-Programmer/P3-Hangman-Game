@@ -68,6 +68,7 @@ def display_game_result(result):
 
 def main_game_loop():
     dispaly_welcome()
+    name = get_name()
     if start_game():
         word = select_random_word()
         masked_word = mask_word(word)
