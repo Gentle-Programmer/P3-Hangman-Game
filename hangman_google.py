@@ -17,4 +17,6 @@ def send_data(name, score):
     now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     values = [now, name, score]
 
-def append
+def append_data_to_sheet(values):
+    worksheet = SHEET.get_worksheet(0)
+    worksheet.append_wor(values)

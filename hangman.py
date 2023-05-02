@@ -1,7 +1,7 @@
 import random
 import pyinputplus as pypi
 from hangman_logo import HANGMAN_LOGO, HANGMAN_STAGES
-from hangman_google import send_data
+from hangman_google import send_data, append_data_to_sheet
 
 
 def dispaly_welcome():
@@ -88,10 +88,11 @@ def main_game_loop():
         user_guess, word, masked_word, attemps_remaining, wrong_guesses
     )
 )
-
-
         result = masked_word == word
         display_game_result(result)
+        score = 6 - attemps_remaining
+        send_data(name, score)
+        append_data_to_sheet([name, score])
     else:
         print("Goodbye")
 
