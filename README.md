@@ -82,6 +82,29 @@ The code consists of several functions that handle different aspects of the game
 Enjoy the game!
 
 
+## Unfixed Bugs
+
+Currently, no unfixed bugs were identified.
+
+
+## Validators Testing
+
+PeP8 has been used to test the game. No errors were found during the final check. 
+
+[PeP8](https://pep8ci.herokuapp.com/)
+
+
+## Browser Testing
+
+The programme has been tested on Google Chrome, Firefox. 
+Due to the nature of the programme, it is not suitable for mobile phones and smaller devices.
+
+
+## Deployment to Heroku
+
+The website has been deployed to Heroku as an App and is connected to GitHub
+
+
 ## References and Learning Materials
 
 Python Official Documentation: The official Python documentation is a comprehensive resource covering all aspects of the Python programming language. It includes tutorials, guides, and reference materials for various Python libraries and functions. [Link](https://docs.python.org/3/)
@@ -93,5 +116,13 @@ gspread library: The gspread library is a popular Python library that simplifies
 pyinputplus library: The pyinputplus library is a Python module for validating user input. This library allows you to add input validation features to your Python programs easily. The GitHub repository includes documentation and examples. [Link](https://github.com/asweigart/pyinputplus)
 
 YouTube Tutorials: [How to Code a Game of Hangman... The EASY Way!! (Beginner Python Tutorial)](https://www.youtube.com/watch?v=cJJTnI22IF8); [How To Code Hangman In Python | Tutorial For Beginners](https://www.youtube.com/watch?v=pFvSb7cb_Us)
+
+Love Sandwiches (Code Institute) - for general guidance and how to set up my API
+
+
+## Acknowledgments
+
+My thanks goes to the Code Institute.
+A special thanks to my amazing mentor Michal Krawczyk who helped me come up with this idea and mentored me throughout.
 
 Enjoy playing!
