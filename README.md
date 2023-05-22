@@ -78,7 +78,7 @@ The code consists of several functions that handle different aspects of the game
 2. Set up the Google Sheets API and obtain the creds.json file as described in the Google Sheets API documentation.
 3. Create a Google Sheet and update the SHEET variable in the hangman_google.py file with the name of the sheet.
 4. Run the hangman.py script to start the game: python hangman.py.
-
+5. Score chart can be found [here](https://docs.google.com/spreadsheets/d/1vEpygCRdKP5bY_401hx75U3SOMHbdext43Lpl9CIoMQ/edit#gid=0)
 Enjoy the game!
 
 
